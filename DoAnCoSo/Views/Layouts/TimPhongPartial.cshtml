@@ -1,0 +1,71 @@
+﻿
+@using (Html.BeginForm("TimPhong","TimKiem"))
+{
+    <div class="hotel_booking_table">
+        <div class="col-md-3">
+            <h2>Đặt Phòng<br>Ngay</h2>
+        </div>
+        <div class="col-md-9">
+            <div class="boking_table">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="book_tabel_item">
+                            <div class="form-group">
+                                <div class="input-group date" id="datetimepicker11">
+                                    <input id="nhanphong" type="text" class="form-control" placeholder="Nhận Phòng">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group date" id="datetimepicker1">
+                                    <input id="traphong" type="text" class="form-control" placeholder="Trả Phòng">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="book_tabel_item">
+                            <div class="input-group">
+                                <select name="SoNguoiLon" class="wide" style="display: none;">
+                                    <option disabled="" selected="">Người Lớn</option>
+                                    <option value="1">1 Người lớn</option>
+                                    <option value="2">2 Người lớn</option>
+                                </select><div class="nice-select wide" tabindex="0"><span class="current">Người Lớn</span><ul class="list"><li data-value="Người Lớn" class="option selected disabled">Người Lớn</li><li data-value="1" class="option">1 Người lớn</li><li data-value="2" class="option">2 Người lớn</li></ul></div>
+                            </div>
+                            <div class="input-group">
+                                <select name="SoTreEm" class="wide" style="display: none;">
+                                    <option disabled="" selected="">Trẻ Em</option>
+                                    <option value="0">0 Trẻ em</option>
+                                    <option value="1">1 Trẻ em</option>
+                                    <option value="2">2 Trẻ em</option>
+                                </select><div class="nice-select wide" tabindex="0"><span class="current">Trẻ Em</span><ul class="list"><li data-value="Trẻ Em" class="option selected disabled">Trẻ Em</li><li data-value="0" class="option">0 Trẻ em</li><li data-value="1" class="option">1 Trẻ em</li><li data-value="2" class="option">2 Trẻ em</li></ul></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="book_tabel_item">
+                            <div class="input-group">
+                                @Html.DropDownList("loaiphong")
+                                @*<select class="wide" style="display: none;">
+                                    <option disabled="" selected="">Loại Phòng</option>
+                                    <option value="1">Phòng đơn (Tối đa 2 người lớn)</option>
+                                    <option value="2">Phòng đôi (Tối đa 5 người lớn)</option>
+                                </select><div class="nice-select wide" tabindex="0"><span class="current">Loại Phòng</span>
+                                <ul class="list"><li data-value="Loại Phòng" class="option selected disabled">Loại Phòng</li>
+                                <li data-value="1" class="option">Phòng đơn (Tối đa 2 người lớn)</li>
+                                <li data-value="2" class="option">Phòng đôi (Tối đa 5 người lớn)</li></ul></div>*@
+                            </div>
+                            @*<a class="book_now_btn button_hover" href="checkout.html">Đặt phòng</a>*@
+                            <input  type="submit" value="Tìm Phòng" class="book_now_btn button_hover" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

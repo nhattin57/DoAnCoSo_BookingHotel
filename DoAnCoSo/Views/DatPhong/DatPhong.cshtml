@@ -1,0 +1,72 @@
+﻿@using DoAnCoSo.Models;
+@model Phong
+
+@{
+    ViewBag.Title = "DatPhong";
+    Layout = "~/Views/Layouts/TrangChuChoTrangCon.cshtml";
+}
+
+<div class="whole-wrap" align="center">
+    <div class="container">
+        <div class="section-top-border" style="padding: 69px 69px;">
+            <div class="row">
+                <div class="col-lg">
+                    <h3 class="mb-30 title_color">Xác Nhận Thông Tin Đặt Phòng</h3>
+                    @using (Html.BeginForm("DatPhong", "DatPhong", FormMethod.Post))
+                    {
+                        @Html.Hidden("MaPhong", Model.MaPhong)
+                        @Html.Hidden("MaLoaiPhong", Model.MaLoaiPhong)
+                        @Html.Hidden("Don_Gia",Model.Don_Gia.Value)
+
+                        <h3 style="color:forestgreen">@ViewBag.ThanhCong</h3>
+                        <div class="mt-10">
+                            <input type="text" name="full_name" placeholder="Họ Tên" required="" class="single-input" maxlength="50">
+                        </div>
+                        <div class="mt-10">
+                            <input type="number" name="phone" placeholder="Số Điện Thoại" required="" class="single-input" maxlength="12" min="9">
+                        </div>
+                        <div class="mt-10">
+                            <input type="email" name="email" placeholder="Địa chỉ email" required="" class="single-input" maxlength="50">
+                        </div>
+                        <div class="mt-10">
+                            <input type="text" name="TenPhong" value="@Model.TenPhong" class="single-input" readonly>
+                        </div>
+                        <div class="mt-10">
+                            <input type="text" name="TenLoaiPhong" value="@Model.LoaiPhong.TenLoaiPhong" class="single-input" readonly>
+                        </div>
+
+                        <div class="mt-10">
+                            <input type="text" name="DonGiaDat" value="@Model.Don_Gia.Value.ToString("#,##")đ/Đêm" class="single-input" readonly>
+                        </div>
+                        <div class="mt-10">
+                            <div class="input-group date" id="datetimepicker11">
+                                <input id="nhanphong" type="text" class="single-input" placeholder="Nhận Phòng" required="" name="NgayDat">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mt-10">
+                            <div class="input-group date" id="datetimepicker1">
+                                <input id="traphong" type="text" class="single-input" placeholder="Trả Phòng" required="" name="NgayTra">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <h4 style="color:red">@ViewBag.LoiDatLich</h4>
+                        <div class="mt-10">
+                            <textarea class="single-textarea" placeholder="Ghi chú" name="GhiChu"></textarea>
+                        </div>
+                        <br>
+                        <div class="mt-10">
+                            @*<button class="genric-btn info circle arrow" type="submit">Đặt Phòng <span class="lnr lnr-arrow-right"></span></button>*@
+                            <input style="font-size:18px" class="genric-btn info circle arrow lnr lnr-arrow-right" type="submit" value="Đặt Phòng" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

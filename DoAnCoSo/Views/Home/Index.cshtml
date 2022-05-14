@@ -1,0 +1,29 @@
+﻿@using DoAnCoSo.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Phong>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layouts/TrangChu.cshtml";
+}
+
+@foreach (var item in Model)
+{
+    <div class="col-lg-3 col-sm-6">
+        <div class="accomodation_item text-center">
+            <div class="hotel_img">
+                <img src="@Url.Content("~/Content/image/"+item.HinhAnh1)" alt="">
+                <a href="@Url.Action("ChiTietPhong","KhachSan",new { @MaPhong=item.MaPhong})" class="btn theme_btn button_hover">Chi Tiết</a>
+            </div>
+            <a href="@Url.Action("ChiTietPhong","KhachSan",new { @MaPhong=item.MaPhong})"><h4 class="sec_h4">@item.TenPhong</h4></a>
+            <h5>@item.Don_Gia.Value.ToString("#,##")đ<small>/đêm</small></h5>
+        </div>
+    </div>
+}
+
+<div class="Phantrang">
+    Trang @(Model.PageCount< Model.PageNumber ? 0:Model.PageNumber )/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+
+</div>
+

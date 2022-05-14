@@ -1,0 +1,63 @@
+﻿@using DoAnCoSo.Models;
+@model  PhanHoiTuKH
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Layouts/TrangChuChoTrangCon.cshtml";
+}
+
+<section class="contact_area section_gap">
+    <div class="container">
+        <div class="mapBox">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1951.7657697323166!2d108.440584!3d11.937655!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbd2f298ef90a650f!2zS2jDoWNoIHPhuqFuIERhbGF0IFBhbGFjZQ!5e0!3m2!1sen!2sus!4v1652090637237!5m2!1sen!2sus" width="100%" height="369px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="contact_info">
+                    <div class="info_item">
+                        <i class="lnr lnr-home"></i>
+                        <h6>Thành phố Đà Lạt, Lâm Đồng</h6>
+                        <p>2 Đ. Trần Phú, Phường 3</p>
+                    </div>
+                    <div class="info_item">
+                        <i class="lnr lnr-phone-handset"></i>
+                        <h6><a href="#">0263 3825 444</a></h6>
+                        <p>Hotline hoạt động 24/7</p>
+                    </div>
+                    <div class="info_item">
+                        <i class="lnr lnr-envelope"></i>
+                        <h6><a href="#">support@dalatplace.com</a></h6>
+                        <p>Gửi cho chúng tôi thắc mắc của bạn!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+               
+                    @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @id = "contactForm" }))
+                    { 
+                        <h3 style="color:">@ViewBag.PhanHoiThanhCong</h3>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" name="HoTen" placeholder="Tên của bạn" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" name="Email" required="" placeholder="Email của bạn">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="subject" name="TieuDe" placeholder="Tiêu đề" required="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <textarea class="form-control" name="NoiDung" id="message" rows="1" placeholder="Nội Dung" required=""></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-right">
+                        <button type="submit" value="submit" class="btn theme_btn button_hover">Gửi</button>
+                    </div>
+                    }
+               
+            </div>
+        </div>
+    </div>
+</section>
+

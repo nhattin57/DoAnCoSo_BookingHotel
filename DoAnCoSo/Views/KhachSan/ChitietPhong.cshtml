@@ -1,0 +1,182 @@
+﻿@using DoAnCoSo.Models;
+@model Phong
+
+@{
+    ViewBag.Title = "ChitietPhong";
+    Layout = "~/Views/Layouts/TrangChuChoTrangCon.cshtml";
+}
+
+<section class="gallery_area section_gap">
+    <div class="container">
+        <div class="section_title text-center">
+            <h2 class="title_color">@Model.TenPhong</h2>
+            <p>@Model.Mota</p>
+        </div>
+        <div class="row imageGallery1" id="gallery">
+            <div class="col-md-4 gallery_item">
+                <div class="gallery_img">
+                    <img src="@Url.Content("~/Content/image/"+Model.HinhAnh1)" alt="">
+                    <div class="hover">
+                        <a class="light" href="@Url.Content("~/Content/image/"+Model.HinhAnh1)"><i class="fa fa-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 gallery_item">
+                <div class="gallery_img">
+                    <img src="@Url.Content("~/Content/image/"+Model.HinhAnh2)" alt="">
+                    <div class="hover">
+                        <a class="light" href="@Url.Content("~/Content/image/"+Model.HinhAnh2)"><i class="fa fa-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 gallery_item">
+                <div class="gallery_img">
+                    <img src="@Url.Content("~/Content/image/"+Model.HinhAnh3)" alt="">
+                    <div class="hover">
+                        <a class="light" href="@Url.Content("~/Content/image/"+Model.HinhAnh3)"><i class="fa fa-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 gallery_item">
+                <div class="gallery_img">
+                    <img src="@Url.Content("~/Content/image/"+Model.HinhAnh4)" alt="">
+                    <div class="hover">
+                        <a class="light" href="@Url.Content("~/Content/image/"+Model.HinhAnh4)"><i class="fa fa-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 gallery_item">
+                <div class="gallery_img">
+                    <img src="@Url.Content("~/Content/image/"+Model.HinhAnh5)" alt="">
+                    <div class="hover">
+                        <a class="light" href="@Url.Content("~/Content/image/"+Model.HinhAnh5)"><i class="fa fa-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 gallery_item">
+                <div class="gallery_img">
+                    <img src="@Url.Content("~/Content/image/"+Model.HinhAnh6)" alt="">
+                    <div class="hover">
+                        <a class="light" href="@Url.Content("~/Content/image/"+Model.HinhAnh6)"><i class="fa fa-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-top-border">
+            <h3 class="mb-30 title_color">Tiện Nghi - Dịch Vụ Khách Sạn</h3>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 mt-sm-30 element-wrap">
+                    <div class="single-element-widget">
+                        <div class="switch-wrap d-flex justify-content-between">
+                            <p>Wifi / Internet miễn phí trong phòng</p>
+                            <div class="disabled-checkbox">
+                                <input type="checkbox" id="disabled-checkbox-active" checked="" disabled="">
+                                <label for="disabled-checkbox-active"></label>
+                            </div>
+                        </div>
+                        <div class="switch-wrap d-flex justify-content-between">
+                            <p>Wifi / Internet miễn phí tại sảnh</p>
+                            <div class="disabled-checkbox">
+                                <input type="checkbox" id="disabled-checkbox-active" checked="" disabled="">
+                                <label for="disabled-checkbox-active"></label>
+                            </div>
+                        </div>
+                        <div class="switch-wrap d-flex justify-content-between">
+                            <p>Nhà Hàng</p>
+                            <div class="disabled-checkbox">
+                                <input type="checkbox" id="disabled-checkbox-active" checked="" disabled="">
+                                <label for="disabled-checkbox-active"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 mt-sm-30 element-wrap">
+                    <div class="single-element-widget">
+                        <div class="switch-wrap d-flex justify-content-between">
+                            <p>Mở cửa 24h</p>
+                            <div class="disabled-checkbox">
+                                <input type="checkbox" id="disabled-checkbox-active" checked="" disabled="">
+                                <label for="disabled-checkbox-active"></label>
+                            </div>
+                        </div>
+                        <div class="switch-wrap d-flex justify-content-between">
+                            <p>Khu vực gởi đồ đạc hành lí</p>
+                            <div class="disabled-checkbox">
+                                <input type="checkbox" id="disabled-checkbox-active" checked="" disabled="">
+                                <label for="disabled-checkbox-active"></label>
+                            </div>
+                        </div>
+                        <div class="switch-wrap d-flex justify-content-between">
+                            <p>Dịch vụ hội họp</p>
+                            <div class="disabled-checkbox">
+                                <input type="checkbox" id="disabled-checkbox-active" checked="" disabled="">
+                                <label for="disabled-checkbox-active"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 mt-sm-30 element-wrap">
+                    <div class="single-element-widget">
+                        <div class="switch-wrap d-flex justify-content-between">
+                            <p>Bãi đậu xe ôtô tại khách sạn</p>
+                            <div class="disabled-checkbox">
+                                <input type="checkbox" id="disabled-checkbox-active" checked="" disabled="">
+                                <label for="disabled-checkbox-active"></label>
+                            </div>
+                        </div>
+                        <div class="switch-wrap d-flex justify-content-between">
+                            <p>Cho thuê xe</p>
+                            <div class="disabled-checkbox">
+                                <input type="checkbox" id="disabled-checkbox-active" checked="" disabled="">
+                                <label for="disabled-checkbox-active"></label>
+                            </div>
+                        </div>
+                        <div class="switch-wrap d-flex justify-content-between">
+                            <p>Đặt tour, vé máy bay, dịch vụ du lịch</p>
+                            <div class="disabled-checkbox">
+                                <input type="checkbox" id="disabled-checkbox-active" checked="" disabled="">
+                                <label for="disabled-checkbox-active"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 mt-sm-30 element-wrap">
+                    <div class="single-element-widget">
+                        <div class="switch-wrap d-flex justify-content-between">
+                            <p>Vệ sinh phòng sạch sẽ mỗi ngày</p>
+                            <div class="disabled-checkbox">
+                                <input type="checkbox" id="disabled-checkbox-active" checked="" disabled="">
+                                <label for="disabled-checkbox-active"></label>
+                            </div>
+                        </div>
+                        <div class="switch-wrap d-flex justify-content-between">
+                            <p>Giặt ủi</p>
+                            <div class="disabled-checkbox">
+                                <input type="checkbox" id="disabled-checkbox-active" checked="" disabled="">
+                                <label for="disabled-checkbox-active"></label>
+                            </div>
+                        </div>
+                        <div class="switch-wrap d-flex justify-content-between">
+                            <p>Thiết bị cao cấp trong phòng</p>
+                            <div class="disabled-checkbox">
+                                <input type="checkbox" id="disabled-checkbox-active" checked="" disabled="">
+                                <label for="disabled-checkbox-active"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  <div class="col-1">
+                      <span class="text-center btn btn-info">Giá Chỉ @Model.Don_Gia.Value.ToString("#,##")đ/đêm</span>
+                  </div>
+            </div>
+        </div>
+        
+        <div>
+            <a class="book_now_btn button_hover" href="@Url.Action("DatPhong","DatPhong",new { @MaPhong=Model.MaPhong})">Đặt phòng ngay</a>
+        </div>
+    </div>
+</section>
+
