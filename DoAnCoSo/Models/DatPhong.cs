@@ -28,6 +28,8 @@ namespace DoAnCoSo.Models
 
         public bool? DaXoa { get; set; }
 
+        public DateTime? ThoiGianDat { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDatPhong> ChiTietDatPhongs { get; set; }
 

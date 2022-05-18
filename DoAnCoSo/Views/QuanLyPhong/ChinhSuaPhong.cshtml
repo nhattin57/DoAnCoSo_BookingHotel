@@ -1,0 +1,138 @@
+﻿@model DoAnCoSo.Models.Phong
+
+@{
+    ViewBag.Title = "ChinhSuaPhong";
+    Layout = "~/Views/Layouts/AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("ChinhSuaPhong", "QuanLyPhong", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.Hidden("MaPhong", Model.MaPhong)
+    @Html.Hidden("HinhAnh1", Model.HinhAnh1)
+    @Html.Hidden("HinhAnh2", Model.HinhAnh2)
+    @Html.Hidden("HinhAnh3", Model.HinhAnh3)
+    @Html.Hidden("HinhAnh4", Model.HinhAnh4)
+    @Html.Hidden("HinhAnh5", Model.HinhAnh5)
+    @Html.Hidden("HinhAnh6", Model.HinhAnh6)
+    @Html.Hidden("DaXoa",Model.DaXoa)
+    <div class="form-horizontal">
+        <h4 style="text-align:center">Chỉnh sửa phòng</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenPhong, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+            <div class="col-md-10">
+                <input type="text" name="TenPhong" value="@Model.TenPhong" class="form-control" />
+                @Html.ValidationMessageFor(model => model.TenPhong, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Don_Gia, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+            <div class="col-md-10">
+                <input type="number" name="Don_Gia" value="@Model.Don_Gia.Value" class="form-control" />
+                @Html.ValidationMessageFor(model => model.Don_Gia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SoNguoiLon, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+            <div class="col-md-10">
+                <input type="number" name="SoNguoiLon" value="@Model.SoNguoiLon" class="form-control" />
+                @Html.ValidationMessageFor(model => model.SoNguoiLon, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SoTreEm, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+            <div class="col-md-10">
+                <input type="number" name="SoTreEm" value="@Model.SoTreEm" class="form-control" />
+                @Html.ValidationMessageFor(model => model.SoTreEm, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mota, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+            <div class="col-md-10">
+                <textarea name="Mota" class="form-control">@Model.Mota</textarea>
+                @Html.ValidationMessageFor(model => model.Mota, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <h3 style="color:red">@ViewBag.SaiDinhDangFile</h3>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HinhAnh1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="HinhAnh" value="Chọn ảnh" accept="image/*" />
+                <img class="" style="max-width:50%;height:auto" src="@Url.Content("~/Content/image/"+Model.HinhAnh1)"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HinhAnh2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="HinhAnh" value="Chọn ảnh" accept="image/*" />
+                <img style="max-width:50%;height:auto" src="@Url.Content("~/Content/image/"+Model.HinhAnh2)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HinhAnh3, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="HinhAnh" value="Chọn ảnh" accept="image/*" />
+                <img style="max-width:50%;height:auto" src="@Url.Content("~/Content/image/"+Model.HinhAnh3)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HinhAnh4, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="HinhAnh" value="Chọn ảnh" accept="image/*" />
+                <img style="max-width:50%;height:auto" src="@Url.Content("~/Content/image/"+Model.HinhAnh4)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HinhAnh5, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="HinhAnh" value="Chọn ảnh" accept="image/*" />
+                <img style="max-width:50%;height:auto" src="@Url.Content("~/Content/image/"+Model.HinhAnh5)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HinhAnh6, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="HinhAnh" value="Chọn ảnh" accept="image/*" />
+                <img style="max-width:50%;height:auto" src="@Url.Content("~/Content/image/"+Model.HinhAnh6)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <span class="control-label col-md-2 font-weight-bold">Loại phòng</span>
+            <div class="col-md-10">
+                @Html.DropDownList("MaLoaiPhong")
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cập nhật" class="btn btn-default btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .current {
+        color: red;
+        font-weight: 700;
+    }
+    .option {
+        cursor: pointer;
+    }
+</style>

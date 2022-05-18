@@ -41,6 +41,29 @@ namespace DoAnCoSo.Controllers
                 ViewBag.LoiDatLich = "Ngày giờ trả phòng phải muộn hơn ngày đặt phòng";
                 return View(phongs);
             }
+
+            var phongDaDuotDat = (from a in db.DatPhongs
+                        orderby a.MaPhong
+                        where a.MaPhong == phong.MaPhong
+                        select a).Where((n=> n.NgayDat <= NgayDat && n.NgayTra >= NgayDat))
+                        .ToList();
+
+            var phongDaDuotDat1 = (from a in db.DatPhongs
+                                  orderby a.MaPhong
+                                  where a.MaPhong == phong.MaPhong
+                                  select a).Where((n => n.NgayDat < NgayTra && n.NgayTra >= NgayTra))
+                        .ToList();
+
+            if (phongDaDuotDat.Count()!=0 || phongDaDuotDat1.Count()!=0)
+            {
+
+                Phong phongrt = db.Phongs.Where(n => n.MaPhong == phong.MaPhong).SingleOrDefault();
+
+                ViewBag.LoiDatLich = "Từ ngày "+NgayDat +" đến ngày"+ NgayTra +" đã có người đặt trước";
+                return View(phongrt);
+            }
+
+
             //Tao moi khach hang va luu csdl de lay ma khach hang
             KhachHang kh = new KhachHang();
             kh.HoTen = HoTen;
@@ -56,6 +79,7 @@ namespace DoAnCoSo.Controllers
             DonDatPhong.MaKH = kh.MaKH;
             DonDatPhong.NgayDat = NgayDat;
             DonDatPhong.NgayTra = NgayTra;
+           // DonDatPhong.ThoiGianDat = DateTime.Now;
             DonDatPhong.DaXoa = false;
             db.DatPhongs.Add(DonDatPhong);
             db.SaveChanges();

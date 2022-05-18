@@ -71,7 +71,8 @@ namespace DoAnCoSo.Controllers
                 ViewBag.DangNhapKhongThanhCong = "Sai tài khoản hoặc mật khẩu";
                 return View();
             }
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index","QuanLyPhong");
         }
+
     }
 }
