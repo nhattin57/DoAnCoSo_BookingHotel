@@ -74,7 +74,7 @@ namespace DoAnCoSo.Controllers
             kh.Email = email;
             kh.SDT = SDT;
             db.KhachHangs.Add(kh);
-            //db.SaveChanges();
+            db.SaveChanges();
             //Lấy ra thông tin khách hàng mới vừa tạo
             
             // Tạo Đơn đặt phòng
@@ -86,7 +86,7 @@ namespace DoAnCoSo.Controllers
            // DonDatPhong.ThoiGianDat = DateTime.Now;
             DonDatPhong.DaXoa = false;
             db.DatPhongs.Add(DonDatPhong);
-            //db.SaveChanges();
+            db.SaveChanges();
 
 
             //Tạo chi tiết
@@ -99,7 +99,7 @@ namespace DoAnCoSo.Controllers
                 chiTietDatPhong.GhiChu = GhiChu;
             }
             db.ChiTietDatPhongs.Add(chiTietDatPhong);
-           // db.SaveChanges();
+            db.SaveChanges();
             //ViewBag.ThanhCong = "Bạn đã đặt phòng thành công";
             ViewBag.LoiDatLich = "";
             GuiEmail("Thư cảm ơn bạn đã đặt phòng tại Royal-Hotel", kh.Email, "daonhattin12@gmail.com", "nhattin12",
