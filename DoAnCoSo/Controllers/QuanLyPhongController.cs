@@ -23,7 +23,7 @@ namespace DoAnCoSo.Controllers
             int PageSize = 10;
             int PageNumber = (page ?? 1);
 
-            return View(lstDonDatPhong.OrderBy(n=>n.NgayDat).ToPagedList(PageNumber,PageSize));
+            return View(lstDonDatPhong.OrderByDescending(n=>n.MaDatPhong).ToPagedList(PageNumber,PageSize));
         }
         
         

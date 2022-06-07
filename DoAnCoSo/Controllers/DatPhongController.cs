@@ -83,7 +83,8 @@ namespace DoAnCoSo.Controllers
             DonDatPhong.MaKH = kh.MaKH;
             DonDatPhong.NgayDat = NgayDat;
             DonDatPhong.NgayTra = NgayTra;
-           // DonDatPhong.ThoiGianDat = DateTime.Now;
+            DonDatPhong.GhiChu = GhiChu;
+           
             DonDatPhong.DaXoa = false;
             db.DatPhongs.Add(DonDatPhong);
             db.SaveChanges();
@@ -94,16 +95,14 @@ namespace DoAnCoSo.Controllers
             chiTietDatPhong.MaKH = DonDatPhong.MaKH.Value;
             chiTietDatPhong.MaDatPhong = DonDatPhong.MaDatPhong;
             chiTietDatPhong.DonGia_Dat = DonGiaDat;
-            if (GhiChu != "")
-            {
-                chiTietDatPhong.GhiChu = GhiChu;
-            }
+            
             db.ChiTietDatPhongs.Add(chiTietDatPhong);
             db.SaveChanges();
             //ViewBag.ThanhCong = "Bạn đã đặt phòng thành công";
             ViewBag.LoiDatLich = "";
             GuiEmail("Thư cảm ơn bạn đã đặt phòng tại Royal-Hotel", kh.Email, "daonhattin12@gmail.com", "nhattin12",
-                "Đơn đặt phòng của bạn đã được Royal-hotel xác nhận, Royal-hotel xin chân thành cảm ơn bạn!");
+                "Đơn đặt phòng của bạn với mã đơn đặt phòng:"+ DonDatPhong.MaDatPhong+ "đã được Royal-hotel xác nhận," +
+                " Royal-hotel xin chân thành cảm ơn bạn!");
 
             string url = ConfigurationManager.AppSettings["Url"];
             string returnUrl = ConfigurationManager.AppSettings["ReturnUrl"];

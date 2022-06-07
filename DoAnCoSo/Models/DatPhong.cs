@@ -28,7 +28,10 @@ namespace DoAnCoSo.Models
 
         public bool? DaXoa { get; set; }
 
-        //public DateTime? ThoiGianDat { get; set; }
+        public DateTime? ThoiGianDat { get; set; }
+
+        [StringLength(256)]
+        public string GhiChu { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDatPhong> ChiTietDatPhongs { get; set; }

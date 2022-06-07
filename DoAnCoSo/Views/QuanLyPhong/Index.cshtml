@@ -32,21 +32,23 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>@item.MaDatPhong</td>
-                <td>@item.Phong.TenPhong</td>
-                <td>@item.KhachHang.HoTen</td>
-                <td>@item.KhachHang.Email</td>
-                <td>@item.KhachHang.SDT</td>
-                <td>@item.NgayDat</td>
-                <td>@item.NgayTra</td>
-                <td>@item.ChiTietDatPhongs.Where(n => n.MaDatPhong == item.MaDatPhong).FirstOrDefault().GhiChu</td>
-                <td>
-                    <a href="@Url.Action("XoaDonDatPhong","QuanLyPhong",new { MaDatPhong=item.MaDatPhong})" class="delete" >
-                        <i class="material-icons" data-toggle="tooltip" title="Xoá"></i>
-                    </a>
-                </td>
-            </tr>
+        <tr>
+            <td>@item.MaDatPhong</td>
+            <td>@item.Phong.TenPhong</td>
+            <td>@item.KhachHang.HoTen</td>
+            <td>@item.KhachHang.Email</td>
+            <td>@item.KhachHang.SDT</td>
+            <td>@item.NgayDat</td>
+            <td>@item.NgayTra</td>
+            <td>
+                @item.GhiChu
+             </td>
+        <td>
+            <a href="@Url.Action("XoaDonDatPhong","QuanLyPhong",new { MaDatPhong=item.MaDatPhong})" class="delete">
+                <i class="material-icons" data-toggle="tooltip" title="Xoá"></i>
+            </a>
+        </td>
+        </tr>
         }
     </tbody>
 </table>

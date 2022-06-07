@@ -21,9 +21,6 @@ namespace DoAnCoSo.Models
 
         public decimal? DonGia_Dat { get; set; }
 
-        [StringLength(256)]
-        public string GhiChu { get; set; }
-
         public virtual DatPhong DatPhong { get; set; }
 
         public virtual KhachHang KhachHang { get; set; }

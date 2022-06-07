@@ -237,6 +237,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachSanController.cs" />
     <Compile Include="Controllers\QuanLyPhongController.cs" />
+    <Compile Include="Controllers\ThongKeController.cs" />
     <Compile Include="Controllers\TimKiemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -303,6 +304,7 @@
     <Content Include="Views\QuanLyPhong\ThemPhong.cshtml" />
     <Content Include="Views\QuanLyPhong\ChinhSuaPhong.cshtml" />
     <Content Include="Views\DatPhong\PaymentConfirm.cshtml" />
+    <Content Include="Views\ThongKe\ThongKe.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

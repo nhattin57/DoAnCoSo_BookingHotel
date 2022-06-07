@@ -56,6 +56,7 @@ MaPhong int,
 MaKH int,
 NgayDat datetime,
 NgayTra datetime,
+GhiChu nvarchar(256),
 DaXoa bit,
 primary key(MaDatPhong)
 )
@@ -64,7 +65,6 @@ create table ChiTietDatPhong(
 MaDatPhong int,
 MaKH int,
 DonGia_Dat decimal,
-GhiChu nvarchar(256)
 primary key(MaDatPhong,MaKH)
 )
 --
@@ -165,3 +165,8 @@ thích hợp với nhiều đối tượng khách hàng khác nhau: Du lịch ng
 
 insert into ThanhVien values(N'Đào Nhật Tín','0384480806','nhattin57@gmail.com',5,'nhattin',0,0)
 
+-- sửa thì chạy chỗ này
+
+alter table DatPhong add GhiChu nvarchar(256)
+
+alter table ChiTietDatPhong drop column GhiChu
