@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using DoAnCoSo.Models;
 using DoAnCoSo.Models.vn_pay;
-
+using System.Text.RegularExpressions;
 namespace DoAnCoSo.Controllers
 {
     public class DatPhongController : Controller
@@ -100,7 +100,7 @@ namespace DoAnCoSo.Controllers
             db.SaveChanges();
             //ViewBag.ThanhCong = "Bạn đã đặt phòng thành công";
             ViewBag.LoiDatLich = "";
-            GuiEmail("Thư cảm ơn bạn đã đặt phòng tại Royal-Hotel", kh.Email, "daonhattin12@gmail.com", "nhattin12",
+            GuiEmail("Thư cảm ơn bạn đã đặt phòng tại Royal-Hotel", kh.Email, "daonhattin12@gmail.com", "sdwittwgafezbkfx",
                 "Đơn đặt phòng của bạn với mã đơn đặt phòng:"+ DonDatPhong.MaDatPhong+ "đã được Royal-hotel xác nhận," +
                 " Royal-hotel xin chân thành cảm ơn bạn!");
 
@@ -151,7 +151,7 @@ namespace DoAnCoSo.Controllers
             (FromEmail, PassWord);//Tài khoản password người gửi
             smtp.EnableSsl = true; //kích hoạt giao tiếp an toàn SSL
             smtp.Send(mail); //Gửi mail đi
-
+            
         }
 
         public ActionResult Payment()

@@ -28,7 +28,7 @@ namespace DoAnCoSo.Models
 
         public bool? DaXoa { get; set; }
 
-        public DateTime? ThoiGianDat { get; set; }
+        //public DateTime? ThoiGianDat { get; set; }
 
         [StringLength(256)]
         public string GhiChu { get; set; }
