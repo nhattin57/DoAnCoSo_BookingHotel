@@ -12,6 +12,10 @@ namespace DoAnCoSo.Controllers
 {
     public class DatPhongController : Controller
     {
+        public static DatPhong DonDatPhong_GloBal;
+        public static KhachHang KhachHang_GloBal;
+        public static ChiTietDatPhong ChiTietDatPhong_GloBal;
+
         HotelModel db = new HotelModel();
 
         [HttpGet]
@@ -38,6 +42,7 @@ namespace DoAnCoSo.Controllers
             string GhiChu = f["GhiChu"];
             decimal DonGiaDat = phong.Don_Gia.Value;
 
+            
             if (NgayTra < NgayDat)
             {
                 Phong phongs = db.Phongs.Where(n => n.MaPhong == phong.MaPhong).SingleOrDefault();
@@ -45,7 +50,7 @@ namespace DoAnCoSo.Controllers
                 ViewBag.LoiDatLich = "Ngày giờ trả phòng phải muộn hơn ngày đặt phòng";
                 return View(phongs);
             }
-
+            
             var phongDaDuotDat = (from a in db.DatPhongs
                         orderby a.MaPhong
                         where a.MaPhong == phong.MaPhong
@@ -67,42 +72,46 @@ namespace DoAnCoSo.Controllers
                 return View(phongrt);
             }
 
-
+            int soNgayDat = NgayTra.Subtract(NgayDat).Days;
+            if (soNgayDat == 0)
+            {
+                soNgayDat = 1;
+            }
             //Tao moi khach hang va luu csdl de lay ma khach hang
             KhachHang kh = new KhachHang();
             kh.HoTen = HoTen;
             kh.Email = email;
             kh.SDT = SDT;
-            db.KhachHangs.Add(kh);
-            db.SaveChanges();
+            KhachHang_GloBal = kh;
+            //db.KhachHangs.Add(kh);
+            // db.SaveChanges();
             //Lấy ra thông tin khách hàng mới vừa tạo
             
             // Tạo Đơn đặt phòng
             DatPhong DonDatPhong = new DatPhong();
             DonDatPhong.MaPhong = phong.MaPhong;
-            DonDatPhong.MaKH = kh.MaKH;
+            //DonDatPhong.MaKH = kh.MaKH;
             DonDatPhong.NgayDat = NgayDat;
             DonDatPhong.NgayTra = NgayTra;
             DonDatPhong.GhiChu = GhiChu;
            
             DonDatPhong.DaXoa = false;
-            db.DatPhongs.Add(DonDatPhong);
-            db.SaveChanges();
+            DonDatPhong_GloBal = DonDatPhong;
+            //db.DatPhongs.Add(DonDatPhong);
+            //db.SaveChanges();
 
-
+            decimal soTienThanhToanOnline= DonGiaDat * soNgayDat * 50 / 100;
             //Tạo chi tiết
             ChiTietDatPhong chiTietDatPhong = new ChiTietDatPhong();
-            chiTietDatPhong.MaKH = DonDatPhong.MaKH.Value;
-            chiTietDatPhong.MaDatPhong = DonDatPhong.MaDatPhong;
-            chiTietDatPhong.DonGia_Dat = DonGiaDat;
-            
-            db.ChiTietDatPhongs.Add(chiTietDatPhong);
-            db.SaveChanges();
+            // chiTietDatPhong.MaKH = DonDatPhong.MaKH.Value;
+            // chiTietDatPhong.MaDatPhong = DonDatPhong.MaDatPhong;
+            chiTietDatPhong.DonGia_Dat = soTienThanhToanOnline;
+            ChiTietDatPhong_GloBal = chiTietDatPhong;
+           // db.ChiTietDatPhongs.Add(chiTietDatPhong);
+           // db.SaveChanges();
             //ViewBag.ThanhCong = "Bạn đã đặt phòng thành công";
             ViewBag.LoiDatLich = "";
-            GuiEmail("Thư cảm ơn bạn đã đặt phòng tại Royal-Hotel", kh.Email, "daonhattin12@gmail.com", "sdwittwgafezbkfx",
-                "Đơn đặt phòng của bạn với mã đơn đặt phòng:"+ DonDatPhong.MaDatPhong+ "đã được Royal-hotel xác nhận," +
-                " Royal-hotel xin chân thành cảm ơn bạn!");
+           
 
             string url = ConfigurationManager.AppSettings["Url"];
             string returnUrl = ConfigurationManager.AppSettings["ReturnUrl"];
@@ -114,7 +123,7 @@ namespace DoAnCoSo.Controllers
             pay.AddRequestData("vnp_Version", "2.1.0"); //Phiên bản api mà merchant kết nối. Phiên bản hiện tại là 2.1.0 or 2.0.1
             pay.AddRequestData("vnp_Command", "pay"); //Mã API sử dụng, mã cho giao dịch thanh toán là 'pay'
             pay.AddRequestData("vnp_TmnCode", tmnCode); //Mã website của merchant trên hệ thống của VNPAY (khi đăng ký tài khoản sẽ có trong mail VNPAY gửi về)
-            pay.AddRequestData("vnp_Amount",(DonGiaDat*100).ToString()); //số tiền cần thanh toán, công thức: số tiền * 100 - ví dụ 10.000 (mười nghìn đồng) --> 1000000
+            pay.AddRequestData("vnp_Amount",(soTienThanhToanOnline*100).ToString()); //số tiền cần thanh toán, công thức: số tiền * 100 - ví dụ 10.000 (mười nghìn đồng) --> 1000000
             pay.AddRequestData("vnp_BankCode", ""); //Mã Ngân hàng thanh toán (tham khảo: https://sandbox.vnpayment.vn/apis/danh-sach-ngan-hang/), có thể để trống, người dùng có thể chọn trên cổng thanh toán VNPAY
             pay.AddRequestData("vnp_CreateDate", DateTime.Now.ToString("yyyyMMddHHmmss")); //ngày thanh toán theo định dạng yyyyMMddHHmmss
             pay.AddRequestData("vnp_CurrCode", "VND"); //Đơn vị tiền tệ sử dụng thanh toán. Hiện tại chỉ hỗ trợ VND
@@ -210,6 +219,20 @@ namespace DoAnCoSo.Controllers
                 {
                     if (vnp_ResponseCode == "00")
                     {
+                        db.KhachHangs.Add(KhachHang_GloBal);
+                        db.SaveChanges();
+
+                        DonDatPhong_GloBal.MaKH = KhachHang_GloBal.MaKH;
+                        db.DatPhongs.Add(DonDatPhong_GloBal);
+                        db.SaveChanges();
+
+                        ChiTietDatPhong_GloBal.MaKH = KhachHang_GloBal.MaKH;
+                        ChiTietDatPhong_GloBal.MaDatPhong = DonDatPhong_GloBal.MaDatPhong;
+                        db.ChiTietDatPhongs.Add(ChiTietDatPhong_GloBal);
+                        db.SaveChanges();
+                        GuiEmail("Thư cảm ơn bạn đã đặt phòng tại Royal-Hotel", KhachHang_GloBal.Email, "daonhattin12@gmail.com", "sdwittwgafezbkfx",
+               "Đơn đặt phòng của bạn với mã đơn đặt phòng:" + DonDatPhong_GloBal.MaDatPhong + "đã được Royal-hotel xác nhận," +
+               " Royal-hotel xin chân thành cảm ơn bạn!");
                         //Thanh toán thành công
                         ViewBag.Message = "Thanh toán thành công hóa đơn " + orderId + " | Mã giao dịch: " + vnpayTranId;
                     }

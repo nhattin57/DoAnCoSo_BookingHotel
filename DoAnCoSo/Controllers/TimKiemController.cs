@@ -42,6 +42,7 @@ namespace DoAnCoSo.Controllers
                     "</script>");
             }
 
+           
                 var query = from a in db.Phongs
                             from b in db.DatPhongs
                             where b.NgayTra < NgayNhan && b.NgayDat < NgayTra && a.MaPhong == b.MaPhong && a.MaLoaiPhong == MaLoaiPhong

@@ -26,7 +26,10 @@ namespace DoAnCoSo.Controllers
             decimal tong = 0;
             foreach (var item in db.DatPhongs.Where(n=>n.DaXoa==false))
             {
-                tong += item.Phong.Don_Gia.Value;
+                foreach (var itemTong in item.ChiTietDatPhongs)
+                {
+                    tong += itemTong.DonGia_Dat.Value;
+                }
             }
             return tong;
         }
@@ -36,6 +39,11 @@ namespace DoAnCoSo.Controllers
             return db.DatPhongs.Count(n=>n.DaXoa==false);
         }
 
+        public ActionResult PhanHoiTuKH()
+        {
+            var lstPhanHoi = db.PhanHoiTuKHs;
 
+            return View(lstPhanHoi);
+        }
     }
 }
